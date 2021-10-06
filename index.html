@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+            
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Finesse Library -->
+    <script type="text/javascript" src="/desktop/assets/js/finesse.js"></script>
+
+                <script type="text/javascript" src="socket.io.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    <svg  class="main" onclick="chatBtn()" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+   width="80" height="80"
+   viewBox="0 0 172 172"
+   style=" fill:#000000;"><defs><linearGradient x1="47.04807" y1="20.42747" x2="139.13945" y2="175.74458" gradientUnits="userSpaceOnUse" id="color-1_D6fq9I7xyv5X_gr1"><stop offset="0" stop-color="#b2dd4c"></stop><stop offset="1" stop-color="#b2dd4c"></stop></linearGradient></defs><g transform=""><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><path d="M85.14,86.86v-1.72h1.72v1.72z" fill="#cccccc"></path><g><path d="M85.78622,9.81833c41.94291,0 75.94226,33.99935 75.94226,75.94226c0,13.8101 -3.74395,26.72028 -10.18386,37.8762l17.33002,39.42922c1.92134,4.37048 -2.69975,8.73336 -6.95251,6.56901l-37.03704,-18.86026c-11.43311,6.89176 -24.77996,10.92809 -39.09887,10.92809c-41.94291,0 -75.94226,-33.99935 -75.94226,-75.94226c0,-41.94291 33.99935,-75.94226 75.94226,-75.94226z" fill="url(#color-1_D6fq9I7xyv5X_gr1)"></path><path d="M46.00387,74.36925c-3.18578,0 -5.783,-2.55546 -5.783,-5.69567v-3.79711c0,-3.14021 2.59723,-5.69567 5.783,-5.69567h79.56091c3.18957,0 5.7868,2.55546 5.7868,5.69567v3.79711c0,3.14021 -2.59723,5.69567 -5.783,5.69567z" fill="#000000" opacity="0.05"></path><path d="M46.00387,72.4707c-2.14157,0 -3.88445,-1.7049 -3.88445,-3.79711v-3.79711c0,-2.09221 1.74287,-3.79711 3.88445,-3.79711h79.56091c2.14157,0 3.88445,1.7049 3.88445,3.79711v3.79711c0,2.09221 -1.74287,3.79711 -3.88445,3.79711z" fill="#000000" opacity="0.07"></path><path d="M127.55446,64.87647v3.79711c0,1.048 -0.89232,1.89856 -1.98969,1.89856h-79.55711c-1.09737,0 -1.98969,-0.85055 -1.98969,-1.89856v-3.79711c0,-1.048 0.89232,-1.89856 1.98969,-1.89856h79.55711c1.09737,0 1.98969,0.85055 1.98969,1.89856z" fill="#ffffff"></path><path d="M46.00387,112.34038c-3.18578,0 -5.783,-2.55546 -5.783,-5.69567v-3.79711c0,-3.14021 2.59723,-5.69567 5.783,-5.69567h79.56091c3.18957,0 5.7868,2.55546 5.7868,5.69567v3.79711c0,3.14021 -2.59723,5.69567 -5.783,5.69567z" fill="#000000" opacity="0.05"></path><path d="M46.00387,110.44183c-2.14157,0 -3.88445,-1.7049 -3.88445,-3.79711v-3.79711c0,-2.09221 1.74287,-3.79711 3.88445,-3.79711h79.56091c2.14157,0 3.88445,1.7049 3.88445,3.79711v3.79711c0,2.09221 -1.74287,3.79711 -3.88445,3.79711z" fill="#000000" opacity="0.07"></path><path d="M127.55446,102.8476v3.79711c0,1.048 -0.89232,1.89856 -1.98969,1.89856h-79.55711c-1.09737,0 -1.98969,-0.85055 -1.98969,-1.89856v-3.79711c0,-1.048 0.89232,-1.89856 1.98969,-1.89856h79.55711c1.09737,0 1.98969,0.85055 1.98969,1.89856z" fill="#ffffff"></path><path d="M46.01526,93.35482c-3.19337,0 -5.79439,-2.55546 -5.79439,-5.69567v-3.79711c0,-3.14021 2.60102,-5.69567 5.79439,-5.69567h71.9439c3.19717,0 5.79819,2.55546 5.79819,5.69567v3.79711c0,3.14021 -2.60102,5.69567 -5.79439,5.69567z" fill="#000000" opacity="0.05"></path><path d="M46.01526,91.45626c-2.14917,0 -3.89584,-1.7049 -3.89584,-3.79711v-3.79711c0,-2.09221 1.74667,-3.79711 3.89584,-3.79711h71.9439c2.14917,0 3.89584,1.7049 3.89584,3.79711v3.79711c0,2.09221 -1.74667,3.79711 -3.89584,3.79711z" fill="#000000" opacity="0.07"></path><path d="M119.96024,83.86204v3.79711c0,1.048 -0.89612,1.89856 -1.99728,1.89856h-71.9477c-1.10116,0 -1.99728,-0.85055 -1.99728,-1.89856v-3.79711c0,-1.048 0.89612,-1.89856 1.99728,-1.89856h71.9439c1.10496,0 2.00108,0.85055 2.00108,1.89856z" fill="#ffffff"></path></g></g></g></svg>
+</div>
+<div id="chatBox">
+  <section class="avenue-messenger">
+    <div class="menu">
+      <div  onclick="cross()" class="button">x</div>
+    </div>
+    <div class="agent-face">
+      <div class="half">
+       <img class="agent circle" src="./newlogo1-1.jpg" alt="logo" ></div>
+    </div>
+  <div class="chat">
+   
+    <main id="chat" class=" msger-chat">
+      <div id="agent" class="left-msg">
+        
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+            
+          </div>
+  
+          <div class="msg-text">
+          </div>
+        </div>
+      </div>
+  
+      <div id="customer" class="msg right-msg">
+        
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+        
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="info">
+        <form name="form"> 
+      <div class="input-container">		
+          <input id="name" type="text" required=""/>
+          <label>Name:</label>
+      </div>
+
+     <div  class="input-container">		
+          <input id="email" type="mail" required="" />
+          <label>Email:</label>
+      </div>
+      <div class="input-container">		
+          <input  id="number" type="number" required=""/>
+          <label>Contact Number:</label>
+      </div>
+          <button onclick="msgBtn()" type="button" class="btn">submit</button>
+      </form>   
+      </div>
+
+      <div  >
+
+    <div id="msg" class="message-box msger-inputarea">
+      <input type="text" class="message-input msger-input" placeholder="Enter your message...">
+      <button class="msger-send-btn message-submit">Send</button>
+    </div>
+  </div>
+    </div>
+</section>
+</div>
+</body>
+</html>
