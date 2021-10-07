@@ -1,3 +1,6 @@
+const socket = io("https://0804-72-255-62-139.ngrok.io");
+
+
 function validateEmail(email) 
     {
         var re = /\S+@\S+\.\S+/;
@@ -72,13 +75,6 @@ function msgBtn() {
   }
 
 
-
-  const socket = io("https://2296-110-37-228-10.ngrok.io");
-
-
- 
-  
-
 $(document).ready(function(){
   socket.on('webChat',function(msg){
     appendMessage(BOT_NAME, BOT_IMG, "left", msg);
@@ -109,7 +105,7 @@ $(document).ready(function(){
     
       const msgText = msgerInput.value;
       if (!msgText) return;
-      socket.emit('webChat', msgText)
+      socket.emit('webChat', JSON.stringify({name: `${Name()} ${cNumber()}`,msg: msgText}))
       appendMessage(Name(), PERSON_IMG, "right", msgText);
       msgerInput.value = "";
       // customerResponse()
