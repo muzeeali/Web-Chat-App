@@ -1,4 +1,6 @@
-const socket = io("https://0804-72-255-62-139.ngrok.io");
+const socket = io("https://08d3-2400-adc1-13e-2400-646e-46e0-c500-1e19.ngrok.io");
+
+var foo = true;
 
 
 function validateEmail(email) 
@@ -75,10 +77,21 @@ function msgBtn() {
   }
 
 
+
+
+
+
+ 
+  
+
 $(document).ready(function(){
-  socket.on('webChat',function(msg){
-    appendMessage(BOT_NAME, BOT_IMG, "left", msg);
-  })
+  
+  function listenSocket(){
+    socket.on(cNumber(),function(msg){
+      console.log('listen',msg)
+      appendMessage(BOT_NAME, BOT_IMG, "left", msg);
+    })
+  }
 
     const msgerForm = get(".msger-inputarea");
     const msgerInput =get(".msger-input");
@@ -100,12 +113,17 @@ $(document).ready(function(){
     
   
     $('.msger-send-btn').click(function(event){
+      if(foo){
+        listenSocket()
+        foo = false;
+      }
+
         console.log('clicked')
       event.preventDefault();
     
       const msgText = msgerInput.value;
       if (!msgText) return;
-      socket.emit('webChat', JSON.stringify({name: `${Name()} ${cNumber()}`,msg: msgText}))
+      socket.emit('webChat-Customer', JSON.stringify({userId: cNumber(),customerName:Name(),message: msgText}))
       appendMessage(Name(), PERSON_IMG, "right", msgText);
       msgerInput.value = "";
       // customerResponse()
