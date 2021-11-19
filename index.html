@@ -65,7 +65,14 @@
   <div id="chatBox">
     <section class="avenue-messenger">
       <div class="menu">
-        <div onclick="cross()" class="button">x</div>
+        <div onclick="min()" class=" minBtn">_</div>
+        <div onclick="cross()" class="button ">x</div>
+      
+      </div>
+      <div id="popUp" class="popUp">
+        <p>Do you want to close this chat session?</p>
+        <button onclick="cancel()">Cancel</button>
+        <button onclick="endChat()">End Chat</button>
       </div>
 
       <div class="chat">

@@ -1,5 +1,5 @@
 var socket;
-
+var bol=false
 var foo = true;
 // console.log("UNIQUE ID", uuidv4());
 
@@ -26,22 +26,53 @@ function chatBtn() {
   var chat = document.getElementById("chatBox");
   var info = document.getElementById("info");
 
-  if (name !== "" && email !== "" && number !== "") {
+  if (bol===false) {
+  
+  chat.style.display = "block";
+
+    info.style.display = "block";
+  } else {
     chat.style.display = "block";
     document.getElementById("msg").style.display = "block";
     document.getElementById("chat").style.display = "block";
-  } else {
-    chat.style.display = "block";
-
-    info.style.display = "block";
   }
 }
 
-function cross() {
+function min() {
   document.getElementById("chatBox").style.display = "none";
   document.getElementById("info").style.display = "none";
   document.getElementById("msg").style.display = "none";
   document.getElementById("chat").style.display = "none";
+  bol=true
+}
+function cross() {
+  var name = Name();
+  var email = Email();
+  var number = cNumber();
+  if (name !== "" && email !== "" && number !== "") {
+    document.getElementById("popUp").style.display = "block";
+  } else {
+    document.getElementById("chatBox").style.display = "none";
+    document.getElementById("info").style.display = "none";
+    document.getElementById("msg").style.display = "none";
+    document.getElementById("chat").style.display = "none";
+  }
+}
+function cancel(){
+  document.getElementById("popUp").style.display = "none";
+}
+function endChat(){
+  document.getElementById("name").value="";
+  document.getElementById("email").value="";
+  document.getElementById("number").value="";
+  
+  $("#chat").html('');
+  bol=false
+  document.getElementById("chatBox").style.display = "none";
+    document.getElementById("info").style.display = "none";
+    document.getElementById("msg").style.display = "none";
+    document.getElementById("chat").style.display = "none";
+    document.getElementById("popUp").style.display = "none";
 }
 
 function msgBtn() {
@@ -58,6 +89,7 @@ function msgBtn() {
       document.getElementById("info").style.display = "none";
       msg.style.display = "block";
       chat.style.display = "block";
+      bol=true
       let customerId;
       if(localStorage.getItem('customerId')){
         customerId = localStorage.getItem('customerId')
@@ -85,11 +117,11 @@ $(document).ready(function () {
   const msgerChat = get(".msger-chat");
 
   const BOT_MSGS = [
-    "Hi, how are you?",
-    "Ohh... I can't understand what you trying to say. Sorry!",
-    "I like to play games... But I don't know how to play!",
-    "Sorry if my answers are not relevant. :))",
-    "I feel sleepy! :(",
+    // "Hi, how are you?",
+    // "Ohh... I can't understand what you trying to say. Sorry!",
+    // "I like to play games... But I don't know how to play!",
+    // "Sorry if my answers are not relevant. :))",
+    // "I feel sleepy! :(",
   ];
 
   const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
@@ -103,7 +135,7 @@ $(document).ready(function () {
       foo = false;
     }
 
-    console.log("clicked");
+    // console.log("clicked");
     event.preventDefault();
 
     const msgText = msgerInput.value;
