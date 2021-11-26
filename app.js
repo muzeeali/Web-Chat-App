@@ -97,7 +97,7 @@ function msgBtn() {
         customerId = uuidv4();
         localStorage.setItem('customerId',customerId)
       }
-      socket = io(`http://localhost:5000`);
+      socket = io(`https://9798-110-37-228-10.ngrok.io`);
     }
   } else {
     alert("Enter values");
