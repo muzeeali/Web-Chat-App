@@ -17,7 +17,9 @@ function Email() {
 }
 function cNumber() {
   var number = document.getElementById("number");
-  return number.value;
+  var countryCode = document.getElementById("countryCode");
+  var completeNumber= "+"+countryCode.value+number.value
+  return completeNumber;
 }
 function chatBtn() {
   var name = Name();
