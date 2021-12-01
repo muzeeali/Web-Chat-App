@@ -17,8 +17,13 @@ function Email() {
 }
 function cNumber() {
   var number = document.getElementById("number");
+  // var countryCode = document.getElementById("countryCode");
+  // var completeNumber= "+"+countryCode.value+number.value
+  return number.value;
+}
+function completeNumber(number){
   var countryCode = document.getElementById("countryCode");
-  var completeNumber= "+"+countryCode.value+number.value
+  var completeNumber= "+"+countryCode.value+number
   return completeNumber;
 }
 function chatBtn() {
@@ -28,15 +33,14 @@ function chatBtn() {
   var chat = document.getElementById("chatBox");
   var info = document.getElementById("info");
 
-  if (bol===false) {
-  
-  chat.style.display = "block";
-
-    info.style.display = "block";
-  } else {
+  if (name !== "" && email !== "" && number !== "") {
     chat.style.display = "block";
     document.getElementById("msg").style.display = "block";
     document.getElementById("chat").style.display = "block";
+    info.style.display = "none";
+  } else {
+    chat.style.display = "block";
+    document.getElementById("info").style.display = "block";
   }
 }
 
@@ -145,7 +149,7 @@ $(document).ready(function () {
     socket.emit(
       "webChat-Customer",
       JSON.stringify({
-        phone: cNumber(),
+        phone:completeNumber(cNumber()),
         userId: localStorage.getItem('customerId'),
         customerName: Name(),
         message: msgText,
